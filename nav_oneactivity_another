@@ -1,0 +1,298 @@
+
+
+Activity_main.xml:
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="270dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/btn5"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="330dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+</RelativeLayout>
+
+-----------------------------------------------------------------------------------------
+
+MainActivity.java:
+package com.example.practical01;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+
+public class MainActivity extends AppCompatActivity {
+
+    Button b1;
+    Button b2;
+    Button b3;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        b1=(Button) findViewById(R.id.btn1);
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent int1 = new Intent(MainActivity.this,one.class);
+                startActivity(int1);
+            }
+        });
+
+        b2=(Button) findViewById(R.id.btn2);
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent int2 = new Intent(MainActivity.this,second.class);
+                startActivity(int2);
+            }
+        });
+
+        b3=(Button) findViewById(R.id.btn5);
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent int3 = new Intent(MainActivity.this,third.class);
+                startActivity(int3);
+            }
+        });
+
+    }
+}
+
+---------------------------------------------------------------------------------
+
+
+Activity_one.xml:
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".one">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="270dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is first Activity"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn5"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="350dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        tools:layout_editor_absoluteX="170dp"
+        tools:layout_editor_absoluteY="360dp" />
+</RelativeLayout>
+
+____________________________________________________
+
+
+one.java:
+package com.example.practical01;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class one extends AppCompatActivity {
+
+    Button b3;
+
+    @SuppressLint("MissingInflatedId")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_one);
+
+        Intent int1= getIntent();
+
+        b3=(Button) findViewById(R.id.btn5);
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+}
+
+________________________________________________________________________________
+
+acitivy_second.xml:
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".second">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is the second activity"
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="252dp" />
+
+    <Button
+        android:id="@+id/btn4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="270dp"
+        android:text="Back" />
+</RelativeLayout>
+
+_______________________________________________________________
+
+second.java:
+
+package com.example.practical01;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class second extends AppCompatActivity {
+    Button b4;
+
+
+    @SuppressLint("MissingInflatedId")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
+
+        Intent int2=getIntent();
+
+        b4=(Button) findViewById(R.id.btn4);
+        b4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+}
+
+_______________________________________________________________________
+
+
+acitiviy_third..xml:
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".third">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is the Third activity"
+        tools:layout_editor_absoluteX="180dp"
+        tools:layout_editor_absoluteY="199dp" />
+
+    <Button
+        android:id="@+id/btn5"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="270dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="back"
+        tools:layout_editor_absoluteX="187dp"
+        tools:layout_editor_absoluteY="339dp" />
+</RelativeLayout>
+
+
+_______________________________
+
+third.java:
+
+package com.example.practical01;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class third extends AppCompatActivity {
+    Button b5;
+
+    @SuppressLint("MissingInflatedId")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_third);
+        Intent int3=getIntent();
+
+        b5=(Button) findViewById(R.id.btn5);
+        b5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+}
