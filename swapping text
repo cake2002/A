@@ -1,0 +1,104 @@
+activity_main.xml:
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/et1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="160dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="148dp" />
+
+    <EditText
+        android:id="@+id/et2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="250dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="330dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+
+
+
+</RelativeLayout>
+
+
+MainActivity.java:
+
+package com.example.swapno;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.text.Editable;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.graphics.Color;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText e1;
+    EditText e2;
+    Button btn;
+   
+
+
+
+    @SuppressLint("MissingInflatedId")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        btn=(Button) findViewById(R.id.btn1);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                e1=(EditText) findViewById(R.id.et1);
+
+                e2=(EditText)findViewById(R.id.et2);
+
+                Editable edt1=e1.getText();
+                Editable edt2=e2.getText();
+
+                Editable dummy=edt1;
+                edt1=edt2;
+                edt2=dummy;
+
+                e1.setText(edt1);
+                e2.setText(edt2);
+
+                e1.setBackgroundColor(Color.RED);
+                e2.setBackgroundColor(Color.YELLOW);
+
+
+
+            }
+        });
+
+
+    }
+}
